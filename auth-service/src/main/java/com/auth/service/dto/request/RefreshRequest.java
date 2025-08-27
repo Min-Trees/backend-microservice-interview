@@ -1,16 +1,12 @@
 package com.auth.service.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class VerifyRequest {
-    @NotNull
-    private Long userId;
-
+public class RefreshRequest {
     @NotBlank
-    private String code;
+    private String refreshToken;
 }

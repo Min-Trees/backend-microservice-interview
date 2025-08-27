@@ -1,20 +1,17 @@
 package com.auth.service.controller;
 
 import com.auth.service.dto.request.LoginRequest;
+import com.auth.service.dto.request.RefreshRequest;
 import com.auth.service.dto.request.UserRequest;
-import com.auth.service.dto.request.VerifyRequest;
 import com.auth.service.dto.response.AuthResponse;
 import com.auth.service.dto.response.UserResponse;
 import com.auth.service.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
@@ -25,13 +22,23 @@ public class AuthController {
         return authService.register(request);
     }
 
-    @PostMapping("/verify")
-    public void verify(@Valid @RequestBody VerifyRequest request) {
-        authService.verify(request);
+    @GetMapping("/verify")
+    public void verify(@RequestParam("token") String token) {
+        authService.verify(token);
     }
 
     @PostMapping("/login")
     public AuthResponse login(@Valid @RequestBody LoginRequest request) {
         return authService.login(request);
+    }
+
+    @PostMapping("/refresh")
+    public AuthResponse refresh(@Valid @RequestBody RefreshRequest request) {
+        return authService.refresh(request.getRefreshToken());
+    }
+
+    @PostMapping("/logout")
+    public void logout(@Valid @RequestBody RefreshRequest request) {
+        authService.logout(request.getRefreshToken());
     }
 }

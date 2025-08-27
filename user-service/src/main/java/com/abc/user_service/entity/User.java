@@ -47,4 +47,7 @@ public class User {
     private EloRank eloRank;
 
     private LocalDateTime createdAt;
+
+    @Column(length = 64)
+    private String verificationCode;
 }

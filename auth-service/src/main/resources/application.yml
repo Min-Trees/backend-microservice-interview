@@ -32,9 +32,48 @@ eureka:
       defaultZone: http://discovery-service:8761/eureka
 
 jwt:
-  secret: "4D2224546D8817FCFAB272A7FC9F9"
-  access-minutes: 30
-  refresh-days: 7
+  key-id: auth-key-1
+  access-minutes: 10
+  refresh-days: 14
+  private-key: |
+    -----BEGIN PRIVATE KEY-----
+    MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDjnUJpLy8vVwUg
+    xq42mV/+xrkk1de74Od3+d95Gjwu/1kqt2LNpu42yvnoVg0JzQ6IG+usFDa4ahdT
+    Mw64xwgGC8BcmuRRICYcoFGMFiIENuHnVoLNSEmjD+t39xlEZqN6yvezDKE8XPFk
+    1aQkQpLD2H+TizZSyaih3395ft8RHYiJ8NKUlhIYaraRorZfyE/Z3d2E5eX/E9jL
+    HP2bdpt1YZnO5QYFW3awT9vg18z8hSYWTHOFgkQ2exbVv8Z4wiD0KdqLj0LhKa5P
+    yNeZ4vdRrohAQJzLpvCT6xZLnGNpIP28ABNjo2aY859thHrbfNXnWMX5SUPrwBa5
+    N531N9CBAgMBAAECggEADYDW38ac1gIjm74tt6+Bsmu3sCe/lLXTBZsdVuHnkCI1
+    +ALJKcotd7KzAMWaIGq54flGEf9g/6/LknQE+5FTOIiZ8OR/hxCRMkGQlO77NaTL
+    4h2PxP304GehYIyYQyaTrEU+TLEDH8Gj0IecJUqNynCdoPMxVdgA2RmZRmvwb+Nj
+    +UZUkP20RAESmgEBeEHS5jVpITboLg+Tdb1vB6XJh1RbRaQDLIfigP1mwYxGj2Xj
+    m2w/0L66YhMVUwhGndS9Lg/kO9zVUnthw+UAF5pkXBIRm7Tur1pFzcFKwQqkRGMx
+    TSGruwS+ZNwQeju9fMaJdbE7UFl4GQ/gKheumMPzwQKBgQD9gJavpmG2B6vHO45Z
+    dkhaKbvbx5XqW7zpRbg1ARjhnScq5dQ2B+XlO6S8DtWgHgB9ekGZElXpcobSVCZB
+    rm2GK+PSdw4nghPaxSgGmfWTZLXW8WJFolfvfsD3e9jg079lJoyns+S8gAByz6wz
+    6S9SE2hjlkP3a8ZzLMeFtA0T0wKBgQDl21+LzFfVGu3oSTM2YFQIH0GnwYYlc2vn
+    y+tROSCLrjpDDwnpPP6WI44rel5ZZqc55+dZEUs6Dd2oL5W5ECrLDwz90x4ABouJ
+    2CQ9u9AogRdlmkoqod7+cnVpdM6/wBVenryU/awing42vKUzbD5a/V/9JZpW3kPU
+    aBowdJ7Z2wKBgGtF//4ihVS3WEy9+hYHhMSKxpFRmzIKUh3QwAvGBBZtH0b67NtU
+    akef/q0KBgJ0z7ZJhvrUlIBuU3kr3OiMfJJ7fjPw5492bxpzteVdP1t5Ea38hZ57
+    /YQ+ekAAK52wXVzbfEf3S0MtU4NCOFfbRIgR6GnEC8zm0Zqph2Ef+Sy7AoGAIKnQ
+    5QvPu2/NOQIV7fc4WcMfUFh22KGTRug6c1tb3Z2Pl/HuJZ/OScWZsWH9QFUPFHJ4
+    9LY5a3GG+xxv+VFr01k7LmKu07Aaaic11zP2O5tEmOKZAX/pMV1QhADeVG9WWhDS
+    mZWGvZCaUnryOuF55vI0jsOmMAv7tZZpilM4M5sCgYA3CJDflEM4Bi6rIRhRCBiV
+    OEjAXq1h1ZN0bL7oNvVgE97c3cHSdb14e7wZCgh6/gUXELWvHUtKrHNjfebwd53D
+    vNDnL/Sc4cxJMX/I2NPnl/ETUFnbdepyoxoNi4Q3YFBx9LafRq46NqMOkCUx8z5v
+    2yNXqEF+gGZb50Xd35/Vlg==
+    -----END PRIVATE KEY-----
+  public-key: |
+    -----BEGIN PUBLIC KEY-----
+    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA451CaS8vL1cFIMauNplf
+    /sa5JNXXu+Dnd/nfeRo8Lv9ZKrdizabuNsr56FYNCc0OiBvrrBQ2uGoXUzMOuMcI
+    BgvAXJrkUSAmHKBRjBYiBDbh51aCzUhJow/rd/cZRGajesr3swyhPFzxZNWkJEKS
+    w9h/k4s2Usmood9/eX7fER2IifDSlJYSGGq2kaK2X8hP2d3dhOXl/xPYyxz9m3ab
+    dWGZzuUGBVt2sE/b4NfM/IUmFkxzhYJENnsW1b/GeMIg9Cnai49C4SmuT8jXmeL3
+    Ua6IQECcy6bwk+sWS5xjaSD9vAATY6NmmPOfbYR623zV51jF+UlD68AWuTed9TfQ
+    gQIDAQAB
+    -----END PUBLIC KEY-----
 
 app:
   base-url: http://localhost:8080

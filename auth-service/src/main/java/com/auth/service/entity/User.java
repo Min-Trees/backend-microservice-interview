@@ -1,4 +1,4 @@
-package com.abc.user_service.entity;
+package com.auth.service.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

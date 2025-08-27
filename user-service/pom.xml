@@ -67,8 +67,14 @@
 			<artifactId>mapstruct</artifactId>
 			<version>1.5.5.Final</version>
 		</dependency>
+                <dependency>
+                        <groupId>org.mapstruct</groupId>
+                        <artifactId>mapstruct-processor</artifactId>
+                        <version>1.5.5.Final</version>
+                        <scope>provided</scope>
+                </dependency>
 
-		<!-- Config Client (lấy cấu hình từ Config Server nếu bạn dùng) -->
+                <!-- Config Client (lấy cấu hình từ Config Server nếu bạn dùng) -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
@@ -142,7 +148,12 @@
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
 						</path>
-					</annotationProcessorPaths>
+                                                <path>
+                                                        <groupId>org.mapstruct</groupId>
+                                                        <artifactId>mapstruct-processor</artifactId>
+                                                        <version>1.5.5.Final</version>
+                                                </path>
+                                        </annotationProcessorPaths>
 				</configuration>
 			</plugin>
 

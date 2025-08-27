@@ -132,10 +132,6 @@ services:
       # Nếu KHÔNG dùng config-repo, truyền trực tiếp (ví dụ):
       # SPRING_APPLICATION_NAME: auth-service
       # EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://discovery-service:8761/eureka
-      # SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/authdb
-      # SPRING_DATASOURCE_USERNAME: postgres
-      # SPRING_DATASOURCE_PASSWORD: 123456
-      # SPRING_JPA_HIBERNATE_DDL_AUTO: update
       # spring.mail.* / jwt.* / app.base-url cũng có thể truyền qua env
     depends_on:
       postgres:

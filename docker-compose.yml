@@ -87,8 +87,7 @@ services:
       - "8080:8080"
     environment:
       SPRING_CONFIG_IMPORT: optional:configserver:http://config-service:8888
-      # Nếu bạn không dùng config-repo cho gateway, có thể truyền trực tiếp:
-      # EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://discovery-service:8761/eureka
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://discovery-service:8761/eureka
     depends_on:
       config-service:
         condition: service_healthy
@@ -107,9 +106,9 @@ services:
     container_name: user-service
     environment:
       SPRING_CONFIG_IMPORT: optional:configserver:http://config-service:8888
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://discovery-service:8761/eureka
       # Nếu KHÔNG dùng config-repo, bỏ dòng trên và bật các dòng dưới:
       # SPRING_APPLICATION_NAME: user-service
-      # EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://discovery-service:8761/eureka
       # SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/userservice
       # SPRING_DATASOURCE_USERNAME: postgres
       # SPRING_DATASOURCE_PASSWORD: 123456
@@ -129,9 +128,9 @@ services:
     container_name: auth-service
     environment:
       SPRING_CONFIG_IMPORT: optional:configserver:http://config-service:8888
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://discovery-service:8761/eureka
       # Nếu KHÔNG dùng config-repo, truyền trực tiếp (ví dụ):
       # SPRING_APPLICATION_NAME: auth-service
-      # EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://discovery-service:8761/eureka
       # SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/authdb
       # SPRING_DATASOURCE_USERNAME: postgres
       # SPRING_DATASOURCE_PASSWORD: 123456

@@ -1,5 +1,4 @@
 CREATE DATABASE userservice;
-CREATE DATABASE authdb;
 CREATE DATABASE examdb;
 CREATE DATABASE questiondb;
 CREATE DATABASE careerdb;

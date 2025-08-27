@@ -1,6 +1,6 @@
-package com.abc.user_service.service;
+package com.auth.service.service;
 
-import com.abc.user_service.entity.User;
+import com.auth.service.entity.User;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -16,22 +16,22 @@ public class JwtService {
     @Value("${jwt.secret}")
     private String secret;
 
-    @Value("${jwt.access-token-expiration}")
-    private long accessExpiration;
+    @Value("${jwt.access-minutes}")
+    private long accessMinutes;
 
-    @Value("${jwt.refresh-token-expiration}")
-    private long refreshExpiration;
+    @Value("${jwt.refresh-days}")
+    private long refreshDays;
 
     private Key getSigningKey() {
         return Keys.hmacShaKeyFor(secret.getBytes());
     }
 
     public String generateAccessToken(User user) {
-        return buildToken(user, accessExpiration);
+        return buildToken(user, accessMinutes * 60_000L);
     }
 
     public String generateRefreshToken(User user) {
-        return buildToken(user, refreshExpiration);
+        return buildToken(user, refreshDays * 24 * 60 * 60_000L);
     }
 
     private String buildToken(User user, long expiration) {

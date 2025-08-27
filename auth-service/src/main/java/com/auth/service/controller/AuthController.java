@@ -1,11 +1,11 @@
-package com.abc.user_service.controller;
+package com.auth.service.controller;
 
-import com.abc.user_service.dto.request.LoginRequest;
-import com.abc.user_service.dto.request.UserRequest;
-import com.abc.user_service.dto.request.VerifyRequest;
-import com.abc.user_service.dto.response.AuthResponse;
-import com.abc.user_service.dto.response.UserResponse;
-import com.abc.user_service.service.AuthService;
+import com.auth.service.dto.request.LoginRequest;
+import com.auth.service.dto.request.UserRequest;
+import com.auth.service.dto.request.VerifyRequest;
+import com.auth.service.dto.response.AuthResponse;
+import com.auth.service.dto.response.UserResponse;
+import com.auth.service.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;

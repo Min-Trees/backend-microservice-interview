@@ -1,4 +1,4 @@
-package com.abc.user_service.dto.request;
+package com.auth.service.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

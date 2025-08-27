@@ -1,14 +1,14 @@
-package com.abc.user_service.service;
+package com.auth.service.service;
 
-import com.abc.user_service.dto.request.LoginRequest;
-import com.abc.user_service.dto.request.UserRequest;
-import com.abc.user_service.dto.request.VerifyRequest;
-import com.abc.user_service.dto.response.AuthResponse;
-import com.abc.user_service.dto.response.UserResponse;
-import com.abc.user_service.entity.User;
-import com.abc.user_service.entity.UserStatus;
-import com.abc.user_service.mapper.UserMapper;
-import com.abc.user_service.repository.UserRepository;
+import com.auth.service.dto.request.LoginRequest;
+import com.auth.service.dto.request.UserRequest;
+import com.auth.service.dto.request.VerifyRequest;
+import com.auth.service.dto.response.AuthResponse;
+import com.auth.service.dto.response.UserResponse;
+import com.auth.service.entity.Role;
+import com.auth.service.entity.User;
+import com.auth.service.entity.UserStatus;
+import com.auth.service.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
@@ -25,7 +25,6 @@ import java.util.UUID;
 public class AuthService {
 
     private final UserRepository userRepository;
-    private final UserMapper userMapper;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final JavaMailSender mailSender;
@@ -36,14 +35,22 @@ public class AuthService {
         if (existing.isPresent()) {
             throw new RuntimeException("Email already exists");
         }
-        User user = userMapper.toEntity(request);
+        User user = new User();
+        Role role = new Role();
+        role.setId(request.getRoleId());
+        user.setRole(role);
+        user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setFullName(request.getFullName());
+        user.setDateOfBirth(request.getDateOfBirth());
+        user.setAddress(request.getAddress());
+        user.setIsStudying(request.getIsStudying());
         user.setStatus(UserStatus.PENDING);
         user.setCreatedAt(LocalDateTime.now());
         user.setVerificationCode(UUID.randomUUID().toString());
         User saved = userRepository.save(user);
         sendVerificationEmail(saved);
-        return userMapper.toResponse(saved);
+        return toUserResponse(saved);
     }
 
     public void verify(VerifyRequest request) {
@@ -81,5 +88,23 @@ public class AuthService {
         } catch (Exception e) {
             // Log and continue
         }
+    }
+
+    private UserResponse toUserResponse(User user) {
+        UserResponse response = new UserResponse();
+        response.setId(user.getId());
+        if (user.getRole() != null) {
+            response.setRoleId(user.getRole().getId());
+        }
+        response.setEmail(user.getEmail());
+        response.setFullName(user.getFullName());
+        response.setDateOfBirth(user.getDateOfBirth());
+        response.setAddress(user.getAddress());
+        response.setStatus(user.getStatus());
+        response.setIsStudying(user.getIsStudying());
+        response.setEloScore(user.getEloScore());
+        response.setEloRank(user.getEloRank());
+        response.setCreatedAt(user.getCreatedAt());
+        return response;
     }
 }

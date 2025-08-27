@@ -1,4 +1,4 @@
-package com.abc.user_service.dto.response;
+package com.auth.service.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
